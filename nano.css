@@ -1,0 +1,165 @@
+/* AP scrolling bucket
+--------------------------------------------------------------------------- */
+
+	.newsfeed {
+		clear: both;
+		margin: 0 0 20px;
+	}
+
+	.newsfeedTitle {
+		border: 1px solid #ddd;
+		box-shadow: 1px 8px 6px -8px rgba(0, 0, 0, 0.2);
+		overflow: hidden;
+	}
+
+		.newsfeedLogo {
+			width: 50px;
+			height: 40px;
+			background: url(/themes/1/img/APsprite.png?151013) no-repeat 0 -70px;
+			text-indent: -9999px;
+			margin: 0 15px 0 5px;
+		}
+
+
+		.newsfeed h2 {
+			border-right: 5px solid #ff322e;
+			color: #000;
+			font-size: 16px;
+			font-weight: normal;
+			line-height: 40px;
+			margin: 0;
+		}
+
+	.newsfeedBody {
+		border-bottom: 1px solid #ddd;
+		box-shadow: inset 0 -10px 10px -10px rgba(0, 0, 0, 0.2);
+		clear: both;
+		}
+
+			.newsfeedList .newsfeedArticle {
+				padding: 5px 0;
+				overflow: hidden;
+				border-bottom: 1px dashed #ccc;
+				margin-right: 1px;
+			}
+
+			.newsfeedList .newsfeedArticle .latest {
+				color: #ababab!important;
+				margin: 0 0 4px;
+			}
+
+			.newsfeedList .newsfeedArticle:last-child {
+				border: 0;
+			}
+
+			.newsfeedList h3 {
+				font-size: 14px;
+				line-height: 16px;
+				margin: 0 4px 0 0;
+			}
+
+/* Nano scroller
+--------------------------------------------------------------------------- */
+
+	.newArticleButton {
+		position: absolute;
+		z-index: 10000;
+		top: 0;
+		left: 0;
+		padding: 5px;
+		background: #f7f7f7;
+		border: 1px solid #dfdfdf;
+		border-top: 0;
+		-moz-border-radius: 0;
+		-webkit-border-radius: 0;
+		border-radius: 0;
+		-webkit-transition: .2s;
+		-moz-transition: .2s;
+		-o-transition: .2s;
+		transition: .2s;
+		width: inherit;
+		text-align: center;
+		font-size: 12px;
+	}
+
+	/** initial setup **/
+	.nano {
+		position : relative;
+		width    : 100%;
+		height   : 396px;
+		overflow : hidden;
+		z-index: 1;
+	}
+	.nano .content {
+		position      : absolute;
+		overflow      : scroll;
+		overflow-x    : hidden;
+		top           : 0;
+		right         : 0;
+		bottom        : 0;
+		left          : 0;
+		z-index: 50;
+	}
+	.nano .content:focus {
+		outline: thin dotted;
+	}
+	.nano .content::-webkit-scrollbar {
+		visibility: hidden;
+	}
+	.has-scrollbar .content::-webkit-scrollbar {
+		visibility: visible;
+	}
+	.nano > .pane {
+		position   : absolute;
+		width      : 6px;
+		right      : 0;
+		top        : 0;
+		bottom     : 0;
+		visibility : hidden\9; /* Target only IE7 and IE8 with this hack */
+		z-index: 100;
+		-webkit-transition    : .3s;
+		-moz-transition       : .3s;
+		-o-transition         : .3s;
+		transition            : .3s;
+	}
+
+	.nano > .pane:hover,
+	.nano > .pane:active {
+		width: 10px;
+	}
+
+	.nano > .pane > .slider {
+		background: #ccc;
+		position              : relative;
+		margin                : 0 1px;
+		-moz-border-radius    : 3px;
+		-webkit-border-radius : 3px;
+		border-radius         : 3px;
+		z-index: 1000;
+		cursor: pointer;
+		-webkit-transition-property: color, height, opacity, width;
+        -webkit-transition-duration: .2s;
+        -moz-transition-property: color, height, opacity, width;
+        -moz-transition-duration: .2s;
+        -o-transition-property: color, height, opacity, width;
+        -o-transition-duration: .2s;
+        transition-property: color, height, opacity, width;
+        transition-duration: .2s;
+		opacity: 0;
+		filter:alpha(opacity=0);
+	}
+
+	.nano > .pane > .slider:hover,
+	.nano > .pane > .slider:active {
+		background: #999;
+	}
+
+	.nano:hover .pane > .slider,
+	.nano:active .pane > .slider {
+		opacity: 0.8;
+		filter:alpha(opacity=80);
+	}
+
+	.nano:hover > .pane, .pane.active, .pane.flashed {
+		visibility : visible\9; /* Target only IE7 and IE8 with this hack */
+	}
