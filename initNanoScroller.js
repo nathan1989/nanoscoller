@@ -1,3 +1,8 @@
+/*!Uses the nanoScrollerJS plugin
+* nanoScrollerJS - v0.7.2
+* http://jamesflorentino.github.com/nanoScrollerJS/
+* Copyright (c) 2013 James Florentino; Licensed MIT */
+
 $.fn.initNanoScroller = function() {
 
 	var $scrollBody = $(this),
